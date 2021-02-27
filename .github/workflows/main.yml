@@ -56,6 +56,6 @@ job1:
 
       - uses: actions/checkout@v2
         # Runs a set of commands using the runners shell
-      - name: third-job
+      - name: final step
       - needs: [job1, job2, job3]
-        run: date        
+        run: final step       
