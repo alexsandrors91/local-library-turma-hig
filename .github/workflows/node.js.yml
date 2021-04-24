@@ -70,7 +70,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_CSS: true
           VALIDATE_MARKDOWN: true
-          JAVASCRIPT_DEFAULT_STYLE: prettier
+          JAVASCRIPT_DEFAULT_STYLE: test
   
   
   deploy-hom:
@@ -91,12 +91,12 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: pedrolacerda-local-library
-          heroku_email: pedrohrl1@gmail.com
+          heroku_app_name: alexsandrors91-local-library
+          heroku_email: alexsandrors91@gmail.com
           justlogin: true
       
       - name: Set Heroku remote
-        run: heroku git:remote -a pedrolacerda-local-library
+        run: heroku git:remote -a alexsandrors91-local-library
       
       - name: Set env variables
         run: |
