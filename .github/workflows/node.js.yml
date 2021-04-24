@@ -118,13 +118,6 @@ jobs:
           with:
             name: node-app
 
-        - name: 'Deploy to Azure Web App'
-            id: deploy-to-webapp
-            uses: azure/webapps-deploy@v2
-            with:
-              app-name: 'aula-cd-alexsanddrors91'
-              publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_478A31C4FB9040B795B037BAA5CEDBF1 }}
-              package: .
-
+    
   
   
