@@ -73,7 +73,7 @@ jobs:
           JAVASCRIPT_DEFAULT_STYLE: test
   
   
-  deploy-hom:
+  deploy-to-hom:
     runs-on: ubuntu-latest
     env:
       DB_URI: $${{ secrets.DB_URI }}
