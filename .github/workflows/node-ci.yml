@@ -1,0 +1,21 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+      
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2.2.2
+      with:
+        name: local-library
+        path: .
+        if-no-files-found: error
