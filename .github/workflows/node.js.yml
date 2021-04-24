@@ -31,8 +31,8 @@ jobs:
     - run: npm test --if-present
   
   
-  prettier:
-    name: Prettier
+  test:
+    name: test
     runs-on: ubuntu-latest
 
     steps:
