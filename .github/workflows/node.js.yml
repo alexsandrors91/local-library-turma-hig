@@ -5,9 +5,9 @@ name: Node.js Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ no-branch ]
   pull_request:
-    branches: [ main ]
+    branches: [ no-branch ]
     
 
 jobs:
@@ -31,8 +31,8 @@ jobs:
     - run: npm test --if-present
   
   
-  test:
-    name: test
+  prettier:
+    name: Prettier
     runs-on: ubuntu-latest
 
     steps:
@@ -70,16 +70,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_CSS: true
           VALIDATE_MARKDOWN: true
-          JAVASCRIPT_DEFAULT_STYLE: test
+          JAVASCRIPT_DEFAULT_STYLE: prettier
   
   
-  deploy-to-hom:
+  deploy:
     runs-on: ubuntu-latest
     env:
       DB_URI: $${{ secrets.DB_URI }}
       NODE_ENV: production
       
-    needs: [build, test]
+    needs: [build, prettier]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -91,12 +91,12 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.10.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: alexsandrors91-local-library
-          heroku_email: alexsandrors91@gmail.com
+          heroku_app_name: pedrolacerda-local-library
+          heroku_email: pedrohrl1@gmail.com
           justlogin: true
       
       - name: Set Heroku remote
-        run: heroku git:remote -a alexsandrors91-local-library
+        run: heroku git:remote -a pedrolacerda-local-library
       
       - name: Set env variables
         run: |
@@ -105,6 +105,7 @@ jobs:
       
       - name: Push code to Heroku
         run: git push heroku main
+© 2021 GitHub, Inc.
 
 
     
